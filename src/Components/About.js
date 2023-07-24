@@ -1,6 +1,6 @@
 import React from 'react'
 
-function About() {
+const About = () => {
   return (
     <div>
       
@@ -9,3 +9,4 @@ function About() {
 }
 
 export default About
+
