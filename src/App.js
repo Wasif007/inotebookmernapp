@@ -11,9 +11,8 @@ function App() {
     <CreateContextExpFunction>
      <Router>
           <Navbar /> 
-           <div className="App">
-          <h1>NOTEBOOK APPLICATION</h1>
-          </div>
+           <div className="container">
+         
           <Routes>
             <Route
               path="/"
@@ -25,6 +24,7 @@ function App() {
               }
             />
             </Routes>
+            </div>
         </Router>
         </CreateContextExpFunction>
  
