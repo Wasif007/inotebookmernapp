@@ -1,15 +1,14 @@
-import React from "react";
-import noteContextCreation from "./notecontext";
+import createContextExp from "./notecontext";
 
-const noteContextCreationFunction=(props)=>{
+const CreateContextExpFunction=(props)=>{
     const state={
-        "name":"wasif",
-        "age":"50"
+        "name":"Kuch bhe rakh lo",
+        "age":"Kuch bhe chale ge"
     }
-    return (
-        <noteContextCreation.Provider value={state}>
+    return(
+        <createContextExp.Provider value={state}>
             {props.children}
-        </noteContextCreation.Provider>
-
-    );
+        </createContextExp.Provider>
+    )
 }
+export default CreateContextExpFunction
