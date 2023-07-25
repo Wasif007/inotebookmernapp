@@ -9,7 +9,7 @@ const About = () => {
     // eslint-disable-next-line
   }, []);
  
-  console.log(a);
+ 
   return (
     <div>
       This is about page {a.state.name} and his age is {a.state.age}
