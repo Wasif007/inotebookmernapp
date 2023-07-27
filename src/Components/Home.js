@@ -1,9 +1,13 @@
-import React, { useContext } from 'react'
+import React, { createContext, useContext } from 'react'
+// eslint-disable-next-line 
+import NotesDisplay from './NotesDisplay';
 import createContextExp from '../context/routes/notecontext';
+
 const Home = () => {
-  const contextUsing=useContext(createContextExp);
-  const {notes}=contextUsing.state;
-  const notesChange=contextUsing.stateChange;
+  const context=useContext(createContextExp);
+  const tagState=context.state;
+  const tagStateChangeFunc=context.statechange;
+    console.log(tagState);
   return (
     <div>
       <div className="container my-2">
@@ -27,9 +31,11 @@ const Home = () => {
 </form>
 <div className="container my-2">
       <h2>Your Notes</h2>
-      {notes.map((note)=>{
+      {tagState.map((note)=>{
         return note.title;
       })}
+        {/* <NotesDisplay/> */}
+    
       </div>
     </div>
   )
