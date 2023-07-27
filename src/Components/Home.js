@@ -1,13 +1,9 @@
-import React, { createContext, useContext } from 'react'
-// eslint-disable-next-line 
+import React, {useContext } from 'react'
+
 import NotesDisplay from './NotesDisplay';
-import createContextExp from '../context/routes/notecontext';
 
 const Home = () => {
-  const context=useContext(createContextExp);
-  const tagState=context.state;
-  const tagStateChangeFunc=context.statechange;
-    console.log(tagState);
+  
   return (
     <div>
       <div className="container my-2">
@@ -30,11 +26,8 @@ const Home = () => {
   <button type="submit" className="btn btn-primary">Submit</button>
 </form>
 <div className="container my-2">
-      <h2>Your Notes</h2>
-      {tagState.map((note)=>{
-        return note.title;
-      })}
-        {/* <NotesDisplay/> */}
+      
+         <NotesDisplay/> 
     
       </div>
     </div>
