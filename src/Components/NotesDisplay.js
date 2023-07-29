@@ -7,12 +7,15 @@ const NotesDisplay = () => {
     const notes=contextUsing.state;
    
   return (
+   <>
+   
     <div className='row my-3'>
       {
       notes.map((note)=>{
        return <NotesCard key={note._id} title={note.title} description={note.description}/>
       })}
     </div>
+    </>
   )
 }
 
