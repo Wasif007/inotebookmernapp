@@ -2,7 +2,7 @@ import { useState } from "react";
 import createContextExp from "./notecontext";
 
 const CreateContextExpFunction=(props)=>{
-   const notes=[
+   const initialNotes=[
     {
       "_id": "64c166c599007dcd6797f174",
       "user": "64bd2f5ff045d15ba60b3bd9",
@@ -40,33 +40,34 @@ const CreateContextExpFunction=(props)=>{
       "__v": 0
     }
   ];
-  const [state,statechange]=useState(notes);
+  const [notes,setNotes]=useState(initialNotes);
 
-    //Adding a new Note
-     const addNote=(title,description,tag)=>{
-      const newNoteCreated={
-        "_id": "64c166c699007dc1d6797f176",
-        "user": "64bd2f5ff045d15ba60b3bd9",
+     // Add a Note
+     const addNote = (title, description, tag)=>{
+      // TODO: API Call
+      console.log("Adding a new note")
+      const note = {
+        "_id": "61322f119553781a8ca8d0e08",
+        "user": "6131dc5e3e4037cd4734a0664",
         "title": title,
         "description": description,
         "tag": tag,
-        "date": "2023-07-26T18:32:38.310Z",
+        "date": "2021-09-03T14:20:09.668Z",
         "__v": 0
       };
-      let newArray=notes.concat(newNoteCreated);
-      statechange(newArray);
-       }
-    //Deleting a note
-     const deleteNote=()=>{
+      setNotes(notes.concat(note)) 
+    }
 
-     }
-    //Editing a note
-     const updateNote=()=>{
+    // Delete a Note
+    const deleteNote = ()=>{
 
-     }
-     
+    }
+    // Edit a Note
+    const editNote = ()=>{
+
+    }
     return(
-        <createContextExp.Provider value={{state,addNote,deleteNote,updateNote}}>
+        <createContextExp.Provider value={{notes,addNote,deleteNote,editNote}}>
             {props.children}
         </createContextExp.Provider>
     )

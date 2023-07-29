@@ -1,10 +1,15 @@
 import React from 'react'
-import AddingNoteFun from './AddingNoteFun';
+import NotesDisplay from './NotesDisplay';
 
 const Home = () => {
   
   return (
-   <AddingNoteFun/>
+    <>
+   
+   <div className="container my-2">
+         <NotesDisplay/> 
+      </div>
+      </>
   )
 }
 
