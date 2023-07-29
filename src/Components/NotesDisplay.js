@@ -10,8 +10,7 @@ const NotesDisplay = () => {
     <div className='row my-3'>
       {
       notes.map((note)=>{
-        console.log(note);
-       return <NotesCard title={note.title} description={note.description}/>
+       return <NotesCard key={note._id} title={note.title} description={note.description}/>
       })}
     </div>
   )
