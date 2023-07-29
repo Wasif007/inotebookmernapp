@@ -4,6 +4,7 @@ import About from "./Components/About";
 import Home from "./Components/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CreateContextExpFunction from "./context/routes/notestate";
+import Alert from "./Components/Alert";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
     <CreateContextExpFunction>
      <Router>
           <Navbar /> 
+           <Alert/>
            <div className="container">
-         
+        
           <Routes>
             <Route
               path="/"
