@@ -18,19 +18,19 @@ const CreateContextExpFunction=(props)=>{
       statechange(json);
      }
     //Adding a new Note
-     const addNote=(title,description,tag)=>{
+     const addNote=async(title,description,tag)=>{
       //Api request making to make a new note
-      
-      const newNoteCreated={
-        "_id": "64c166c699007dc1d6797f176",
-        "user": "64bd2f5ff045d15ba60b3bd9",
-        "title": title,
-        "description": description,
-        "tag": tag,
-        "date": "2023-07-26T18:32:38.310Z",
-        "__v": 0
-      };
-      statechange(notes.concat(newNoteCreated))
+      const response = await fetch(`${url}/api/notes/postingnote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiZDJmNWZmMDQ1ZDE1YmE2MGIzYmQ5In0sImlhdCI6MTY5MDEyMDY3MH0.pT7L30saSBTjMo5xhM1WI5mBj7_w87MzzWsNlJvsNjQ"  
+        },
+        body: JSON.stringify({title,description,tag}), 
+      });
+      const json=await response.json();
+      //Changing notes state on front end
+      statechange(notes.concat(json));
        }
     //Deleting a note
      const deleteNote=async (id)=>{
