@@ -12,14 +12,15 @@ const CreateContextExpFunction=(props)=>{
         headers: {
           "Content-Type": "application/json",
           "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiZDJmNWZmMDQ1ZDE1YmE2MGIzYmQ5In0sImlhdCI6MTY5MDEyMDY3MH0.pT7L30saSBTjMo5xhM1WI5mBj7_w87MzzWsNlJvsNjQ"
-        },
-        body: JSON.stringify(), 
+        }
       });
       const json=await response.json(); 
       statechange(json);
      }
     //Adding a new Note
      const addNote=(title,description,tag)=>{
+      //Api request making to make a new note
+      
       const newNoteCreated={
         "_id": "64c166c699007dc1d6797f176",
         "user": "64bd2f5ff045d15ba60b3bd9",
@@ -32,7 +33,17 @@ const CreateContextExpFunction=(props)=>{
       statechange(notes.concat(newNoteCreated))
        }
     //Deleting a note
-     const deleteNote=(id)=>{
+     const deleteNote=async (id)=>{
+      //Api request to delete a note from both ends
+      const response = await fetch(`${url}/api/notes/deletenote/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiZDJmNWZmMDQ1ZDE1YmE2MGIzYmQ5In0sImlhdCI6MTY5MDEyMDY3MH0.pT7L30saSBTjMo5xhM1WI5mBj7_w87MzzWsNlJvsNjQ"
+         }
+      });
+      const json=await response.json(); 
+      console.log(json);
       const newNotesADel=notes.filter((noteFilter)=> {return noteFilter._id!==id});
       
       statechange(newNotesADel);
@@ -50,7 +61,8 @@ const CreateContextExpFunction=(props)=>{
         body: JSON.stringify({title,description,tag}), 
       });
       const json=await response.json(); 
-      
+      console.log(json);
+
       for (let index = 0; index < notes.length; index++) {
         const element = notes[index];
         if(element._id===id)
