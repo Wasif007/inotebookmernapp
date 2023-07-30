@@ -7,7 +7,7 @@ const CreateContextExpFunction=(props)=>{
      const [notes,statechange]=useState(notesInitial);
 //Fetching all notes to be displayed on our application
      const fetchingAllNotes=async ()=>{
-      const response = await fetch(`http://localhost:5000/api/notes/fetchingAllNotes`, {
+      const response = await fetch(`${url}/api/notes/fetchingAllNotes`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
