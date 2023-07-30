@@ -2,10 +2,15 @@ import React, { useContext } from 'react'
 import createContextExp from '../context/routes/notecontext';
 import NotesCard from './NotesCard';
 import AddingNoteFun from './AddingNoteFun';
+import { useEffect } from 'react';
 
 const NotesDisplay = () => {
     const contextUsing=useContext(createContextExp);
     const {notes}=contextUsing;
+    const {fetchingAllNotes}=contextUsing;
+    useEffect(() => {
+      fetchingAllNotes();
+      }, []);
    
   return (
    <>
