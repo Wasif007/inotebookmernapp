@@ -18,7 +18,7 @@ const NotesDisplay = () => {
       
       {
       notes.map((note)=>{
-       return <NotesCard key={note._id} title={note.title} description={note.description}/>
+       return <NotesCard key={note._id} note={note}/>
       })}
     </div>
     </>
