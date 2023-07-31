@@ -9,13 +9,18 @@ const NotesDisplay = () => {
 
     const {notes}=contextUsing;
     const {fetchingAllNotes}=contextUsing;
+    const {updateNote}=contextUsing;
     //Using useState to set initial values of all fields
-    const [note, setNote] = useState({etitle: "", edescription: "", etag: ""})
+    const [note, setNote] = useState({eid:"",etitle: "", edescription: "", etag: ""})
 
     const handleClick = (e)=>{
         e.preventDefault();
+        //New Ref to close when update button is clicked
+        closeRef.current.click();
         //Consoling to check output
         console.log(note);
+        //Sending note details to context update method
+        updateNote(note.eid,note.etitle,note.edescription,note.etag);
     }
 
     const onChange = (e)=>{
@@ -27,11 +32,12 @@ const NotesDisplay = () => {
       // eslint-disable-next-line
       }, []);
       const ref=useRef(null);
+      const closeRef=useRef(null);
    const updateFunction=(note)=>{
     //Use ref to show the modal of update
     ref.current.click();
     //Setting note value from fetching the notes value using props
-    setNote({etitle:note.title,edescription:note.description,etag:note.tag});
+    setNote({eid:note._id,etitle:note.title,edescription:note.description,etag:note.tag});
    }
   return (
    <>
@@ -71,7 +77,8 @@ const NotesDisplay = () => {
 
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        {/* When ever update button is clicked refer it to close button to close the modal */}
+        <button ref={closeRef} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
       </div>
     </div>

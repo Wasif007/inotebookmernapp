@@ -53,26 +53,29 @@ const CreateContextExpFunction=(props)=>{
      const updateNote=async (id,title,description,tag)=>{
       //Looping to find the required note and than updating its data
       const response = await fetch(`${url}/api/notes/updatenote/${id}`, {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          
+          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiZDJmNWZmMDQ1ZDE1YmE2MGIzYmQ5In0sImlhdCI6MTY5MDEyMDY3MH0.pT7L30saSBTjMo5xhM1WI5mBj7_w87MzzWsNlJvsNjQ"
+        
         },
         body: JSON.stringify({title,description,tag}), 
       });
       const json=await response.json(); 
       console.log(json);
-
+      let newNotesSetting=JSON.parse(JSON.stringify(notes));
       for (let index = 0; index < notes.length; index++) {
-        const element = notes[index];
+        const element = newNotesSetting[index];
         if(element._id===id)
         {
-          element.title=title;
-          element.description=description;
-          element.tag=tag;
+          newNotesSetting[index].title=title;
+          newNotesSetting[index].description=description;
+          newNotesSetting[index].tag=tag;
+          break;
         }
         
       }
+      statechange(newNotesSetting);
      }
 
     return(
