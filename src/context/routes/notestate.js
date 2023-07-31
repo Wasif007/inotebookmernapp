@@ -63,11 +63,14 @@ const CreateContextExpFunction=(props)=>{
       });
       const json=await response.json(); 
       console.log(json);
+      //Making a deep copy of notes
       let newNotesSetting=JSON.parse(JSON.stringify(notes));
+      //Looping through array to find the exact id and changing its detail with passed on from the  modal field
       for (let index = 0; index < notes.length; index++) {
         const element = newNotesSetting[index];
         if(element._id===id)
         {
+          //Setting the note to be be used in useState after breaking the loop
           newNotesSetting[index].title=title;
           newNotesSetting[index].description=description;
           newNotesSetting[index].tag=tag;
@@ -75,6 +78,7 @@ const CreateContextExpFunction=(props)=>{
         }
         
       }
+      //Setting the note according to detail
       statechange(newNotesSetting);
      }
 
