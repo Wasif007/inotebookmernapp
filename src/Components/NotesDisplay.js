@@ -79,7 +79,7 @@ const NotesDisplay = () => {
       <div className="modal-footer">
         {/* When ever update button is clicked refer it to close button to close the modal */}
         <button ref={closeRef} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
+        <button type="button" disabled={note.etag.length<5 || note.edescription.length<5 || note.etitle.length<5} className="btn btn-primary" onClick={handleClick}>Update Note</button>
       </div>
     </div>
   </div>
@@ -87,7 +87,10 @@ const NotesDisplay = () => {
    <div className="container my-2">
     <h2>Your Notes</h2>
    </div>
-    
+    {/* Display No Notes when notes are null */}
+   <div className="container">
+          {notes.length===0 && "No Notes to be displayed"}
+          </div>
     <div className='row my-2'>
       
       {

@@ -4,11 +4,12 @@ const AddingNoteFun = () => {
     const context = useContext(createContextExp);
     const {addNote} = context;
 
-    const [note, setNote] = useState({title: "", description: "", tag: "default"})
+    const [note, setNote] = useState({title: "", description: "", tag: ""})
 
     const handleClick = (e)=>{
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
+        setNote({title: "", description: "", tag: ""});
     }
 
     const onChange = (e)=>{
@@ -22,18 +23,18 @@ const AddingNoteFun = () => {
       <form>
   <div className="form-group my-1">
     <label htmlFor="title">Title</label>
-    <input type="text" className="form-control" id="title" name='title' aria-describedby="emailHelp" onChange={onChange}/>
+    <input type="text" className="form-control" id="title" name='title' value={note.title} minLength={5} required aria-describedby="emailHelp" onChange={onChange}/>
   </div>
   <div className="form-group">
     <label htmlFor="description">Description</label>
-    <input type="text" className="form-control" id="description" name="description" onChange={onChange}/>
+    <input type="text" className="form-control" id="description" minLength={5} value={note.description} required name="description" onChange={onChange}/>
   </div>
   <div className="form-group">
     <label htmlFor="tag">Tag</label>
-    <input type="text" className="form-control" id="tag" name="tag" onChange={onChange}/>
+    <input type="text" className="form-control" id="tag" minLength={5} required value={note.tag} name="tag" onChange={onChange}/>
   </div>
   
-  <button type="submit" className="btn btn-primary" onClick={handleClick}>Add a Note</button>
+  <button type="submit" disabled={note.title.length<5 || note.description.length<5 || note.tag.length<5} className="btn btn-primary" onClick={handleClick}>Add a Note</button>
 </form>
 
     </div>
