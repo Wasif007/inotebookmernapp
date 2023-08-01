@@ -43,7 +43,6 @@ const CreateContextExpFunction=(props)=>{
          }
       });
       const json=await response.json(); 
-      console.log(json);
       const newNotesADel=notes.filter((noteFilter)=> {return noteFilter._id!==id});
       
       statechange(newNotesADel);
@@ -62,7 +61,6 @@ const CreateContextExpFunction=(props)=>{
         body: JSON.stringify({title,description,tag}), 
       });
       const json=await response.json(); 
-      console.log(json);
       //Making a deep copy of notes
       let newNotesSetting=JSON.parse(JSON.stringify(notes));
       //Looping through array to find the exact id and changing its detail with passed on from the  modal field

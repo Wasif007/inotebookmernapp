@@ -17,8 +17,7 @@ const NotesDisplay = () => {
         e.preventDefault();
         //New Ref to close when update button is clicked
         closeRef.current.click();
-        //Consoling to check output
-        console.log(note);
+        
         //Sending note details to context update method
         updateNote(note.eid,note.etitle,note.edescription,note.etag);
     }
