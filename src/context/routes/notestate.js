@@ -79,9 +79,21 @@ const CreateContextExpFunction=(props)=>{
       //Setting the note according to detail
       statechange(newNotesSetting);
      }
-
+ const loggingInFunc=async (email,password)=>{
+   //Looping to find the required note and than updating its data
+   const response = await fetch(`${url}/api/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+        
+    },
+    body: JSON.stringify({email,password}), 
+  });
+  const json=await response.json(); 
+  console.log(json);
+ }
     return(
-        <createContextExp.Provider value={{notes,addNote,deleteNote,updateNote,fetchingAllNotes}}>
+        <createContextExp.Provider value={{notes,addNote,deleteNote,updateNote,fetchingAllNotes,loggingInFunc}}>
             {props.children}
         </createContextExp.Provider>
     )
