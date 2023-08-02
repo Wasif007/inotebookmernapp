@@ -102,8 +102,29 @@ alert("Invalid Credentials");
   }
  
  }
+ const signingUpFunction=async(name,email,password)=>{
+   //Looping to find the required note and than updating its data
+   const response = await fetch(`${url}/api/auth/createUser`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+        
+    },
+    body: JSON.stringify({name,email,password}), 
+  });
+  const json=await response.json(); 
+  //If successful in Login
+  if(json.success){
+localStorage.setItem("token",json.authToken);
+console.log("Hello");
+  }
+  //If Unsuccessful in login
+  else{
+alert("Invalid Credentials");
+  }
+ }
     return(
-        <createContextExp.Provider value={{notes,addNote,deleteNote,updateNote,fetchingAllNotes,loggingInFunc}}>
+        <createContextExp.Provider value={{notes,addNote,deleteNote,updateNote,fetchingAllNotes,loggingInFunc,signingUpFunction}}>
             {props.children}
         </createContextExp.Provider>
     )
