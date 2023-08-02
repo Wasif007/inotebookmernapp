@@ -79,6 +79,7 @@ const CreateContextExpFunction=(props)=>{
       //Setting the note according to detail
       statechange(newNotesSetting);
      }
+     //Login to user FROM FRONT END
  const loggingInFunc=async (email,password)=>{
    //Looping to find the required note and than updating its data
    const response = await fetch(`${url}/api/auth/login`, {
@@ -90,7 +91,16 @@ const CreateContextExpFunction=(props)=>{
     body: JSON.stringify({email,password}), 
   });
   const json=await response.json(); 
-  console.log(json);
+  //If successful in Login
+  if(json.success){
+localStorage.setItem("token",json.authToken);
+console.log("Hello");
+  }
+  //If Unsuccessful in login
+  else{
+alert("Invalid Credentials");
+  }
+ 
  }
     return(
         <createContextExp.Provider value={{notes,addNote,deleteNote,updateNote,fetchingAllNotes,loggingInFunc}}>
