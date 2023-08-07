@@ -1,6 +1,6 @@
 import React, { useContext,useState } from 'react'
 import createContextExp from '../context/routes/notecontext'
-const LoggingIn = () => {
+const LoggingIn = (props) => {
   //useContext used to fetch all details regarding login like auth token
   const context=useContext(createContextExp);
   const {loggingInFunc}=context;

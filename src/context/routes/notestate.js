@@ -2,6 +2,7 @@ import { useState } from "react";
 import createContextExp from "./notecontext";
 const CreateContextExpFunction=(props)=>{
   const url="http://localhost:5000";
+ 
    const notesInitial=[];
   
      const [notes,statechange]=useState(notesInitial);
@@ -94,12 +95,12 @@ const CreateContextExpFunction=(props)=>{
   //If successful in Login
   if(json.success){
 localStorage.setItem("token",json.authToken);
+props.settingAlert("Logging In Successful","success");
 console.log("Hello");
   }
   //If Unsuccessful in login
   else{
-alert("Invalid Credentials");
-  }
+props.settingAlert("Invalid Credentials","danger");  }
  
  }
  const signingUpFunction=async(name,email,password)=>{
@@ -113,14 +114,14 @@ alert("Invalid Credentials");
     body: JSON.stringify({name,email,password}), 
   });
   const json=await response.json(); 
-  //If successful in Login
+  //If successful in SignUp
   if(json.success){
 localStorage.setItem("token",json.authToken);
-console.log("Hello");
+props.settingAlert("Logging In Successful","success");
   }
-  //If Unsuccessful in login
+  //If Unsuccessful in SignUp
   else{
-alert("Invalid Credentials");
+    props.settingAlert("Invalid Credentials","danger"); 
   }
  }
     return(

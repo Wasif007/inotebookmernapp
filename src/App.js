@@ -7,19 +7,31 @@ import CreateContextExpFunction from "./context/routes/notestate";
 import Alert from "./Components/Alert";
 import Login from "./Components/LoggingIn";
 import Signup from "./Components/Signup";
+import { useState } from "react";
 function App() {
+
+  const [alert,setAlert]= useState(null);
+  const settingAlert=(message,type)=>{
+    setAlert({
+      message:message,
+      type:type
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
   return (
     <>
-    <CreateContextExpFunction>
+    <CreateContextExpFunction settingAlert={settingAlert}>
      <Router>
           <Navbar /> 
-           <Alert/>
+          <Alert alert={alert}/>
            <div className="container">
         
           <Routes>
             <Route
               path="/"
-              element={<Home   exact/>}
+              element={<Home  settingAlert={settingAlert} exact/>}
             />
             <Route
               path="/about"
@@ -28,12 +40,12 @@ function App() {
             />
             <Route
               path="/login"
-              element={ <Login exact/>
+              element={ <Login settingAlert={settingAlert} exact/>
               }
             />
             <Route
               path="/signup"
-              element={ <Signup exact/>
+              element={ <Signup settingAlert={settingAlert} exact/>
               }
             />
             </Routes>

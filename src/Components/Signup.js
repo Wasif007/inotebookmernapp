@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import createContextExp from '../context/routes/notecontext';
 
+
 const Signup = () => {
   //useContext used to fetch all details regarding login like auth token
   const context=useContext(createContextExp);
   const {signingUpFunction}=context;
+  
   //Using State to setNote and passing it to function and setting forms field value
   const [note, setNote] = useState({name:"",email: "", password: "",cpassword:""})
 
