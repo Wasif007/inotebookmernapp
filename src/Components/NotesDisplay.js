@@ -4,7 +4,7 @@ import NotesCard from './NotesCard';
 import AddingNoteFun from './AddingNoteFun';
 import { useEffect,useState} from 'react';
 
-const NotesDisplay = () => {
+const NotesDisplay = (props) => {
     const contextUsing=useContext(createContextExp);
 
     const {notes}=contextUsing;
@@ -95,7 +95,7 @@ const NotesDisplay = () => {
       {
       notes.map((note)=>{
         //Sending update function as a prop and getting note from other component
-       return <NotesCard key={note._id} updateFunction={updateFunction} note={note}/>
+       return <NotesCard key={note._id} updateFunction={updateFunction} settingAlert={props.settingAlert} note={note}/>
       })}
     </div>
     </>
