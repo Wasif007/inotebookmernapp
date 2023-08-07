@@ -20,6 +20,7 @@ const NotesDisplay = (props) => {
         
         //Sending note details to context update method
         updateNote(note.eid,note.etitle,note.edescription,note.etag);
+        props.settingAlert("Notes Updated Successfully","success");
     }
 
     const onChange = (e)=>{

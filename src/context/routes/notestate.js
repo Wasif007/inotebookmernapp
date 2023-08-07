@@ -47,6 +47,7 @@ const CreateContextExpFunction=(props)=>{
       const newNotesADel=notes.filter((noteFilter)=> {return noteFilter._id!==id});
       
       statechange(newNotesADel);
+      props.settingAlert("Note Deleted Successfully","success");
 
      }
     //Editing a note
@@ -75,7 +76,7 @@ const CreateContextExpFunction=(props)=>{
           newNotesSetting[index].tag=tag;
           break;
         }
-        
+      
       }
       //Setting the note according to detail
       statechange(newNotesSetting);
@@ -96,7 +97,6 @@ const CreateContextExpFunction=(props)=>{
   if(json.success){
 localStorage.setItem("token",json.authToken);
 props.settingAlert("Logging In Successful","success");
-console.log("Hello");
   }
   //If Unsuccessful in login
   else{
