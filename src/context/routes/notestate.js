@@ -1,6 +1,8 @@
 import { useState } from "react";
 import createContextExp from "./notecontext";
+import { useNavigate } from 'react-router-dom';
 const CreateContextExpFunction=(props)=>{
+  let navigations=useNavigate();
   const url="http://localhost:5000";
  
    const notesInitial=[];
@@ -96,6 +98,7 @@ const CreateContextExpFunction=(props)=>{
   //If successful in Login
   if(json.success){
 localStorage.setItem("token",json.authToken);
+navigations("/");
 props.settingAlert("Logging In Successful","success");
   }
   //If Unsuccessful in login

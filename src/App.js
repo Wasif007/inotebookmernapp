@@ -22,8 +22,9 @@ function App() {
   }
   return (
     <>
-    <CreateContextExpFunction settingAlert={settingAlert}>
      <Router>
+    <CreateContextExpFunction settingAlert={settingAlert}>
+    
           <Navbar /> 
           <Alert alert={alert}/>
            <div className="container">
@@ -50,9 +51,9 @@ function App() {
             />
             </Routes>
             </div>
-        </Router>
+       
         </CreateContextExpFunction>
- 
+  </Router>
     </>
   );
 }
